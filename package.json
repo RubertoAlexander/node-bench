@@ -2,7 +2,7 @@
   "name": "node-bench",
   "version": "0.0.1",
   "scripts": {
-    "start": "node index.ts"
+    "start": "node index.js"
   },
   "dependencies": {
     "@types/node": "^18.16.3",
