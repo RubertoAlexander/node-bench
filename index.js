@@ -1,10 +1,23 @@
 const express = require('express');
+const fs = require('fs');
 
 const port = process.env.PORT || 3000;
 
 const server = express();
 
-server.get('/', (req, res) => {
+const complicatedFunc = async () => {
+  const largeBlob = await fetch('https://raw.githubusercontent.com/json-iterator/test-data/master/large-file.json');
+  const json = await largeBlob.json();
+
+  for (let i = 0; i < 20; i++) {
+    fs.writeFileSync(`./${i}.json`, JSON.stringify(json));
+  }
+  
+  return json;
+}
+
+server.get('/', async (req, res) => {
+  await complicatedFunc();
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/html');
   res.end(`
