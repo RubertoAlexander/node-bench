@@ -18,7 +18,7 @@ server.get('/', async (req, res) => {
           <h1>Node Benchmark</h1>
           <p>Current time: ${new Date().toISOString()}</p>
           <p>Request to render time (ms): <span id='render-time' /></p>
-          <p>Error: ${error}</p>
+          
           <script>
             const renderTime = new Date() - performance.timing.requestStart
             document.getElementById('render-time').innerText = renderTime.toString()
