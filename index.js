@@ -6,14 +6,11 @@ const port = process.env.PORT || 3000;
 const server = express();
 
 const complicatedFunc = async () => {
-  const largeBlob = await fetch('https://raw.githubusercontent.com/json-iterator/test-data/master/large-file.json');
-  const json = await largeBlob.json();
 
   for (let i = 0; i < 20; i++) {
-    fs.writeFileSync(`./${i}.json`, JSON.stringify(json));
+    const file = fs.readFileSync('large-file-0.json', 'utf8')
+    const data = JSON.parse(file)
   }
-
-  return json;
 }
 
 server.get('/', async (req, res) => {
