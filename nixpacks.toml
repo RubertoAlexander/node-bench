@@ -1,2 +1,2 @@
 [phases.setup]
-nixPkgs = ['...', 'nodejs-19_x']
+nixPkgs = ['nodejs-19_x', 'npm']
