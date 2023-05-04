@@ -5,23 +5,7 @@ const port = process.env.PORT || 3000;
 
 const server = express();
 
-const complicatedFunc = async () => {
-
-  for (let i = 0; i < 20; i++) {
-    const file = fs.readFileSync('large-file-0.json', 'utf8')
-    const data = JSON.parse(file)
-  }
-}
-
 server.get('/', async (req, res) => {
-  let error = ''
-  try {
-    await complicatedFunc();
-  }
-  catch (err) {
-    console.error(err);
-    error = err;
-  }
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/html');
   res.end(`
